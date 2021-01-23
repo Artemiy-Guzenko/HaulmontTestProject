@@ -1,0 +1,24 @@
+server:
+  port: 8080
+  error:
+    include-stacktrace: never
+
+spring:
+  application:
+    name: HaulmontTestProject
+
+  datasource:
+    url: jdbc:hsqldb:file:TestHSQLDB; hsqldb.lock_file=false
+    username: sa
+    password:
+    initialization-mode: always
+    schema: classpath*:db/schema.sql
+    data: classpath*:db/data.sql
+
+  jpa:
+    database: HSQL
+    database-platform: org.hibernate.dialect.HSQLDialect
+    show-sql: true
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
