@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Entity
 @Setter
 @Getter
-@Table
+@Table(name = "payment")
 public class Payment extends AbstractEntity {
 
     @Column(name = "payment_date")

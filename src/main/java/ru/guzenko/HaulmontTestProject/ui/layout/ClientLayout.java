@@ -8,12 +8,9 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
-import com.vaadin.flow.router.BeforeEvent;
-import com.vaadin.flow.router.HasUrlParameter;
 import com.vaadin.flow.router.Route;
 import ru.guzenko.HaulmontTestProject.backend.entity.Client;
 import ru.guzenko.HaulmontTestProject.backend.service.ClientService;
-import ru.guzenko.HaulmontTestProject.ui.MainLayout;
 import ru.guzenko.HaulmontTestProject.ui.form.ClientForm;
 
 @Route("client")
@@ -24,11 +21,7 @@ public class ClientLayout extends VerticalLayout {
     private TextField filterText = new TextField();
     private Label label;
     private final String bankName;
-
-
-    /**!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
-    private Long bankId =1L;
-    /**!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+    private final Long currentBankId = 1L;
 
     private final ClientService clientService;
 
@@ -39,12 +32,12 @@ public class ClientLayout extends VerticalLayout {
 
         addClassName("client-view");
         setWidthFull();
-        setHeight("500px");
+        setHeight("550px");
 
         configureGrid();
         configureLabel();
 
-        clientForm = new ClientForm(clientService.findAll(bankId));
+        clientForm = new ClientForm(clientService.findAll(bankName));
         clientForm.addListener(ClientForm.SaveEvent.class, this::saveClient);
         clientForm.addListener(ClientForm.DeleteEvent.class, this::deleteClient);
         clientForm.addListener(ClientForm.CloseEvent.class, e -> closeEditor());
@@ -52,7 +45,6 @@ public class ClientLayout extends VerticalLayout {
         Div content = new Div(clientGrid, clientForm);
         content.addClassName("content");
         content.setSizeFull();
-
 
 
         add(label, getToolBar(), clientGrid, clientForm);
@@ -73,8 +65,6 @@ public class ClientLayout extends VerticalLayout {
     private void configureLabel() {
         String text = "Our clients";
         label = new Label(text);
-
-        System.out.println(bankName + "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     }
 
     private void deleteClient(ClientForm.DeleteEvent event) {
@@ -105,7 +95,9 @@ public class ClientLayout extends VerticalLayout {
 
     private void addClient() {
         clientGrid.asSingleSelect().clear();
-        editClient(new Client());
+        Client newClient = new Client();
+        newClient.setId(currentBankId);
+        editClient(newClient);
     }
 
 
@@ -126,7 +118,7 @@ public class ClientLayout extends VerticalLayout {
     }
 
     private void updateList() {
-        clientGrid.setItems(clientService.findAll(filterText.getValue(), 1L/*bankId*/));
+        clientGrid.setItems(clientService.findAll(filterText.getValue(), bankName));
     }
 
 }

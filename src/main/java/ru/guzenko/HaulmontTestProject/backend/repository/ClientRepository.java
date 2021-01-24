@@ -11,10 +11,12 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
 
     @Query("select c from Client c " +
             "where lower(c.lastName) like lower(concat('%', :searchTerm, '%')) " +
-            "and c.bank.id = 1")
-    List<Client> search(@Param("searchTerm") String searchTerm/*, @Param("bankId") Long bankId*/);
+            "and c.bank.bankName = :bankName ")
+    List<Client> search(@Param("searchTerm") String searchTerm, @Param("bankName") String bankName);
 
     List<Client> findAllByBank_Id(Long id);
+
+    List<Client> findAllByBank_BankName(String bankName);
 
 
 }

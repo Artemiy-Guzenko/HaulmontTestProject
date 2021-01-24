@@ -17,20 +17,25 @@ public class CreditLayout extends VerticalLayout {
     private CreditForm creditForm;
     private Grid<Credit> creditGrid = new Grid<>(Credit.class);
     private Label label;
-    private Long bankId = 1L;
 
+    private final Long currentBankId;
     private final CreditService creditService;
 
-    public CreditLayout(CreditService creditService) {
+    public CreditLayout(CreditService creditService, Long currentBankId) {
         this.creditService = creditService;
+        this.currentBankId = currentBankId;
 
         addClassName("credit-view");
-        setSizeFull();
+        setWidth("400px");
+        setHeight("450px");
+
+
+
         configureGrid();
         configureLabel();
 
 
-        creditForm = new CreditForm(creditService.findAll(bankId));
+        creditForm = new CreditForm(creditService.findAll(currentBankId));
         creditForm.addListener(CreditForm.SaveEvent.class, this::saveCredit);
         creditForm.addListener(CreditForm.DeleteEvent.class, this::deleteCredit);
         creditForm.addListener(CreditForm.CloseEvent.class, e -> closeEditor());
@@ -102,6 +107,6 @@ public class CreditLayout extends VerticalLayout {
     }
 
     private void updateList() {
-        creditGrid.setItems(creditService.findAll(bankId));
+        creditGrid.setItems(creditService.findAll(currentBankId));
     }
 }

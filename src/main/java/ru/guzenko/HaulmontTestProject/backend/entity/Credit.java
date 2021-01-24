@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Setter
 @Getter
-@Table
+@Table(name = "credit")
 public class Credit extends AbstractEntity {
 
     @Column(name = "credit_limit")

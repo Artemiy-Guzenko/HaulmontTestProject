@@ -2,12 +2,10 @@ package ru.guzenko.HaulmontTestProject.ui;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
-import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
-import com.vaadin.flow.router.RouterLink;
 import ru.guzenko.HaulmontTestProject.backend.entity.Bank;
 import ru.guzenko.HaulmontTestProject.backend.service.BankService;
 import ru.guzenko.HaulmontTestProject.ui.form.BankForm;
@@ -21,7 +19,7 @@ public class MainLayout extends VerticalLayout {
     Label label;
 
     private final BankService bankService;
-    private String bankName;
+    private String selectedBankName;
 
     public MainLayout(BankService bankService) {
         this.bankService = bankService;
@@ -36,9 +34,14 @@ public class MainLayout extends VerticalLayout {
         form.addListener(BankForm.DeleteEvent.class, this::deleteBank);
         form.addListener(BankForm.CloseEvent.class, e -> closeEditor());
 
-        Div content = new Div(grid, form);
-        content.addClassName("content");
-        content.setSizeFull();
+        VerticalLayout gridLayout = new VerticalLayout(grid);
+        gridLayout.setWidth("500px");
+        gridLayout.setHeight("500px");
+        VerticalLayout formLayout = new VerticalLayout(form);
+        formLayout.setWidth("300px");
+        formLayout.setHeight("500px");
+
+        HorizontalLayout content = new HorizontalLayout(gridLayout, formLayout);
 
         add(label, getToolBar(), content);
         updateList();
@@ -82,20 +85,16 @@ public class MainLayout extends VerticalLayout {
     }
 
     private HorizontalLayout getToolBar() {
-        /*filterText.setPlaceholder("Filter by name...");
-        filterText.setClearButtonVisible(true);
-        filterText.setValueChangeMode(ValueChangeMode.LAZY);
-        filterText.addValueChangeListener(e -> updateList());*/
-
         Button addButton = new Button("+ Add new bank", click -> addBank());
 
         Button goToButton = new Button("Go to selected bank ->");
+        goToButton.setEnabled(false);
 
         grid.addSelectionListener(selectionEvent -> {
             if (!grid.asSingleSelect().isEmpty()) {
                 goToButton.setEnabled(true);
 
-                bankName = grid.asSingleSelect().getValue().getBankName();
+                selectedBankName = grid.asSingleSelect().getValue().getBankName();
             } else {
                 goToButton.setEnabled(false);
             }
@@ -104,7 +103,7 @@ public class MainLayout extends VerticalLayout {
         goToButton.addClickListener(click ->
                 goToButton
                         .getUI()
-                        .ifPresent(ui -> ui.navigate(BankLayout.class, bankName)));
+                        .ifPresent(ui -> ui.navigate(BankLayout.class, selectedBankName)));
 
 
         HorizontalLayout toolbar = new HorizontalLayout(addButton, goToButton);

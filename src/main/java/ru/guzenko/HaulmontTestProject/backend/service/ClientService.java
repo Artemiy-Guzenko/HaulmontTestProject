@@ -13,16 +13,18 @@ public class ClientService {
 
     private final ClientRepository clientRepository;
 
-    public List<Client> findAll(Long bankId) {
-        return clientRepository.findAllByBank_Id(bankId);
+    public List<Client> findAll(String bankName) {
+        return clientRepository.findAllByBank_BankName(bankName);
+        //return clientRepository.findAllByBank_Id(bankId);
     }
 
-    public List<Client> findAll(String filterText, Long bankId) {
+    public List<Client> findAll(String filterText, String bankName) {
         if (filterText == null || filterText.isEmpty()) {
-            return clientRepository.findAll();
+            return clientRepository.findAllByBank_BankName(bankName);
         } else {
-            return clientRepository.search(filterText/*, bankId*/);
+            return clientRepository.search(filterText, bankName);
         }
+
     }
 
 

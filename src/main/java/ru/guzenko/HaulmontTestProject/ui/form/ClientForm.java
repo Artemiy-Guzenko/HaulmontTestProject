@@ -12,6 +12,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
 import com.vaadin.flow.shared.Registration;
+import ru.guzenko.HaulmontTestProject.backend.entity.Bank;
 import ru.guzenko.HaulmontTestProject.backend.entity.Client;
 
 import java.util.List;
@@ -50,6 +51,7 @@ public class ClientForm extends FormLayout {
 
     public void setClient(Client client) {
         this.client = client;
+        /****************************************///client.setBank();
         binder.readBean(client);
     }
 
@@ -71,7 +73,6 @@ public class ClientForm extends FormLayout {
     }
 
     private void validateAndSave() {
-
         try {
             binder.writeBean(client);
             fireEvent(new ClientForm.SaveEvent(this, client));

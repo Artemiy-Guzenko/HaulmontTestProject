@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Setter
 @Getter
-@Table
+@Table(name = "client")
 @RequiredArgsConstructor
 public class Client extends AbstractEntity {
 
