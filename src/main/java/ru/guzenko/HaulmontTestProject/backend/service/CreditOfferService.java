@@ -18,6 +18,10 @@ public class CreditOfferService {
         return offerRepository.findAllByClient_Bank_Id(bankId);
     }
 
+    public List<CreditOffer> findAll() {
+        return offerRepository.findAll();
+    }
+
     public void delete(CreditOffer creditOffer) {
         offerRepository.delete(creditOffer);
     }

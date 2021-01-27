@@ -16,7 +16,7 @@ import ru.guzenko.HaulmontTestProject.ui.form.CreditOfferForm;
 public class CreditOfferView extends VerticalLayout implements HasUrlParameter<String> {
 
     private CreditOfferForm offerForm;
-    private Grid<CreditOffer> offerGrid = new Grid<>(CreditOffer.class);
+    private final Grid<CreditOffer> offerGrid = new Grid<>(CreditOffer.class);
 
     private final HorizontalLayout topPanel = new HorizontalLayout();
     private final HorizontalLayout contentPanel = new HorizontalLayout();
@@ -44,10 +44,14 @@ public class CreditOfferView extends VerticalLayout implements HasUrlParameter<S
         currentBankName = parameter;
         currentBankId = bankService.findByBankName(currentBankName).getId();
 
+        setSizeFull();
+
+
         configureTopPanel();
         configureContentPanel();
 
-        add(topPanel, contentPanel);
+        add(topPanel);
+        add(contentPanel);
     }
 
     private void configureTopPanel() {
@@ -97,8 +101,10 @@ public class CreditOfferView extends VerticalLayout implements HasUrlParameter<S
 
     private void configureGrid() {
         /*offerGrid.setWidthFull();
-        offerForm.setHeight("550px");*/
+        offerForm.setHeight("500px");*/
         //offerForm.setSizeFull();
+
+        offerGrid.removeColumnByKey("paymentSchedule");
         offerGrid.setColumns("client", "credit", "creditSum");
 
         offerGrid.getColumns().forEach(col -> col.setAutoWidth(true));

@@ -40,6 +40,8 @@ public class CreditOfferForm extends FormLayout {
     public CreditOfferForm(List<Client> clients, List<Credit> credits) {
         addClassName("credit-form");
 
+
+
         binder.forField(creditSum)
                 .withNullRepresentation("")
                 .withConverter(new StringToLongConverter("Only Longs"))
@@ -64,6 +66,7 @@ public class CreditOfferForm extends FormLayout {
                 createButtonsLayout());
     }
 
+
     public void setCreditOffer(CreditOffer creditOffer) {
         this.creditOffer = creditOffer;
         binder.readBean(creditOffer);
@@ -78,8 +81,8 @@ public class CreditOfferForm extends FormLayout {
         close.addClickShortcut(Key.ESCAPE);
 
         save.addClickListener(click -> validateAndSave());
-        delete.addClickListener(click -> fireEvent(new CreditOfferForm.DeleteEvent(this, creditOffer)));
-        close.addClickListener(click -> fireEvent(new CreditOfferForm.CloseEvent(this)));
+        delete.addClickListener(click -> fireEvent(new DeleteEvent(this, creditOffer)));
+        close.addClickListener(click -> fireEvent(new CloseEvent(this)));
 
         binder.addStatusChangeListener(event -> save.setEnabled(binder.isValid()));
 
@@ -89,7 +92,7 @@ public class CreditOfferForm extends FormLayout {
     private void validateAndSave() {
         try {
             binder.writeBean(creditOffer);
-            fireEvent(new CreditOfferForm.SaveEvent(this, creditOffer));
+            fireEvent(new SaveEvent(this, creditOffer));
         } catch (ValidationException e) {
             e.printStackTrace();
         }
@@ -109,20 +112,20 @@ public class CreditOfferForm extends FormLayout {
         }
     }
 
-    public static class SaveEvent extends CreditOfferForm.CreditOfferFormEvent {
+    public static class SaveEvent extends CreditOfferFormEvent {
         SaveEvent(CreditOfferForm source, CreditOffer creditOffer) {
             super(source, creditOffer);
         }
     }
 
-    public static class DeleteEvent extends CreditOfferForm.CreditOfferFormEvent {
+    public static class DeleteEvent extends CreditOfferFormEvent {
         DeleteEvent(CreditOfferForm source, CreditOffer creditOffer) {
             super(source, creditOffer);
         }
 
     }
 
-    public static class CloseEvent extends CreditOfferForm.CreditOfferFormEvent {
+    public static class CloseEvent extends CreditOfferFormEvent {
         CloseEvent(CreditOfferForm source) {
             super(source, null);
         }

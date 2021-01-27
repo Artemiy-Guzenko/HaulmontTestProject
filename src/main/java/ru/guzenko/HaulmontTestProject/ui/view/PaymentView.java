@@ -19,7 +19,7 @@ public class PaymentView extends VerticalLayout implements HasUrlParameter<Long>
     private final PaymentService paymentService;
     private final CreditOfferService creditOfferService;
 
-    private Grid<Payment> paymentGrid = new Grid<>(Payment.class);
+    private final Grid<Payment> paymentGrid = new Grid<>(Payment.class);
 
     public PaymentView(PaymentService paymentService, CreditOfferService creditOfferService) {
         this.paymentService = paymentService;
@@ -37,7 +37,8 @@ public class PaymentView extends VerticalLayout implements HasUrlParameter<Long>
                 + currentCredit + " for " + currentCreditSum + " $");
 
         paymentGrid.setColumns("paymentDate", "paymentAmount", "paymentBody", "interestRepayment");
-        paymentGrid.setSizeFull();
+        paymentGrid.setWidthFull();
+        paymentGrid.setHeight("500px");
         paymentGrid.setItems(paymentService.findAll(currentOfferId));
 
         add(paymentGrid);

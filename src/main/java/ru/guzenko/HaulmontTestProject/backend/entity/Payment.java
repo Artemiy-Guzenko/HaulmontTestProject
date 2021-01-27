@@ -36,4 +36,8 @@ public class Payment extends AbstractEntity {
         this.interestRepayment = interestRepayment;
         this.offer = offer;
     }
+
+    public Payment() {
+
+    }
 }
