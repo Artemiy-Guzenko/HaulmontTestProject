@@ -33,12 +33,16 @@ public class CreditForm extends FormLayout {
         addClassName("credit-form");
 
         binder.forField(creditLimit)
+                .withNullRepresentation("")
                 .withConverter(new StringToDoubleConverter(0.0, "doubles only"))
                 .bind(Credit::getCreditLimit, Credit::setCreditLimit);
         binder.forField(interestRate)
+                .withNullRepresentation("")
                 .withConverter(new StringToDoubleConverter(0.0, "doubles only"))
                 .bind(Credit::getInterestRate, Credit::setInterestRate);
         binder.bindInstanceFields(this);
+
+
 
         add(
                 creditLimit,

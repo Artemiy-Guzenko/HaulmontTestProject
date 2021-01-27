@@ -35,4 +35,9 @@ public class Client extends AbstractEntity {
     @ManyToOne
     @JoinColumn(name = "fk_client_bank")
     private Bank bank;
+
+    @Override
+    public String toString() {
+        return  this.lastName + " " + this.firstName + " " + this.middleName;
+    }
 }

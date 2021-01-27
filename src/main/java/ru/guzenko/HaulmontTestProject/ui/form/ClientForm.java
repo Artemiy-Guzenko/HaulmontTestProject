@@ -52,6 +52,9 @@ public class ClientForm extends FormLayout {
     public void setClient(Client client) {
         this.client = client;
         /****************************************///client.setBank();
+
+        //client.setBank();
+
         binder.readBean(client);
     }
 

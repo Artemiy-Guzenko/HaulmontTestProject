@@ -1,4 +1,4 @@
-package ru.guzenko.HaulmontTestProject.ui.layout;
+package ru.guzenko.HaulmontTestProject.ui.view.layout;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
@@ -7,11 +7,12 @@ import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
+import ru.guzenko.HaulmontTestProject.backend.entity.Bank;
 import ru.guzenko.HaulmontTestProject.backend.entity.Credit;
+import ru.guzenko.HaulmontTestProject.backend.service.BankService;
 import ru.guzenko.HaulmontTestProject.backend.service.CreditService;
 import ru.guzenko.HaulmontTestProject.ui.form.CreditForm;
 
-@Route("credit")
 public class CreditLayout extends VerticalLayout {
 
     private CreditForm creditForm;
@@ -20,20 +21,19 @@ public class CreditLayout extends VerticalLayout {
 
     private final Long currentBankId;
     private final CreditService creditService;
+    private final BankService bankService;
 
-    public CreditLayout(CreditService creditService, Long currentBankId) {
+    public CreditLayout(CreditService creditService, BankService bankService, Long currentBankId) {
         this.creditService = creditService;
+        this.bankService = bankService;
         this.currentBankId = currentBankId;
 
         addClassName("credit-view");
         setWidth("400px");
         setHeight("450px");
 
-
-
         configureGrid();
         configureLabel();
-
 
         creditForm = new CreditForm(creditService.findAll(currentBankId));
         creditForm.addListener(CreditForm.SaveEvent.class, this::saveCredit);
@@ -86,7 +86,12 @@ public class CreditLayout extends VerticalLayout {
 
     private void addCredit() {
         creditGrid.asSingleSelect().clear();
-        editCredit(new Credit());
+
+        Credit newCredit = new Credit();
+        Bank currentBank = bankService.findByBankId(currentBankId).get();
+        newCredit.setBank(currentBank);
+
+        editCredit(newCredit);
     }
 
 

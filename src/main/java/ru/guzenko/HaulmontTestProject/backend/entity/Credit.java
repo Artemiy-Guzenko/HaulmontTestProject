@@ -24,4 +24,9 @@ public class Credit extends AbstractEntity {
     @ManyToOne
     @JoinColumn(name = "fk_credit_bank")
     private Bank bank;
+
+    @Override
+    public String toString() {
+        return this.creditLimit + " $, " + this.interestRate + " %";
+    }
 }

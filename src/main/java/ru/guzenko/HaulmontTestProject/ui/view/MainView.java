@@ -1,4 +1,4 @@
-package ru.guzenko.HaulmontTestProject.ui;
+package ru.guzenko.HaulmontTestProject.ui.view;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
@@ -9,10 +9,9 @@ import com.vaadin.flow.router.Route;
 import ru.guzenko.HaulmontTestProject.backend.entity.Bank;
 import ru.guzenko.HaulmontTestProject.backend.service.BankService;
 import ru.guzenko.HaulmontTestProject.ui.form.BankForm;
-import ru.guzenko.HaulmontTestProject.ui.layout.BankLayout;
 
 @Route("")
-public class MainLayout extends VerticalLayout {
+public class MainView extends VerticalLayout {
 
     BankForm form;
     Grid<Bank> grid = new Grid<>(Bank.class);
@@ -21,7 +20,7 @@ public class MainLayout extends VerticalLayout {
     private final BankService bankService;
     private String selectedBankName;
 
-    public MainLayout(BankService bankService) {
+    public MainView(BankService bankService) {
         this.bankService = bankService;
 
         addClassName("banks-view");
@@ -67,7 +66,8 @@ public class MainLayout extends VerticalLayout {
     }
 
     private void configureLabel() {
-        String text = "TEXTTEXTETXETXETXET";
+        String text = "Welcome to our credit calculation app. On this page you can see list of available banks. You also can " +
+                "add new bank, or edit one of existing by selecting it.";
         label = new Label(text);
     }
 
@@ -103,7 +103,7 @@ public class MainLayout extends VerticalLayout {
         goToButton.addClickListener(click ->
                 goToButton
                         .getUI()
-                        .ifPresent(ui -> ui.navigate(BankLayout.class, selectedBankName)));
+                        .ifPresent(ui -> ui.navigate(BankView.class, selectedBankName)));
 
 
         HorizontalLayout toolbar = new HorizontalLayout(addButton, goToButton);

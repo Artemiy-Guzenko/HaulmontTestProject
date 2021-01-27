@@ -21,7 +21,10 @@ public class CreditOffer extends AbstractEntity {
     private Credit credit;
 
     @Column(name = "credit_sum")
-    private Double creditSum;
+    private Long creditSum;
+
+    @Column(name = "credit_period")
+    private Long creditPeriod;
 
     @OneToMany(mappedBy = "offer", cascade = CascadeType.ALL)
     private List<Payment> paymentSchedule;

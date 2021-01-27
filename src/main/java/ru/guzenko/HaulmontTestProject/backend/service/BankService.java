@@ -30,4 +30,8 @@ public class BankService {
     public Bank findByBankName(String bankName) {
         return bankRepository.findByBankName(bankName);
     }
+
+    public Optional<Bank> findByBankId(Long bankId) {
+        return bankRepository.findById(bankId);
+    }
 }

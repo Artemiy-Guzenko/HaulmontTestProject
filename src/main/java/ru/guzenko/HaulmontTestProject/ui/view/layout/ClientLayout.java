@@ -1,4 +1,4 @@
-package ru.guzenko.HaulmontTestProject.ui.layout;
+package ru.guzenko.HaulmontTestProject.ui.view.layout;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
@@ -8,27 +8,29 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.value.ValueChangeMode;
-import com.vaadin.flow.router.Route;
+import ru.guzenko.HaulmontTestProject.backend.entity.Bank;
 import ru.guzenko.HaulmontTestProject.backend.entity.Client;
+import ru.guzenko.HaulmontTestProject.backend.service.BankService;
 import ru.guzenko.HaulmontTestProject.backend.service.ClientService;
 import ru.guzenko.HaulmontTestProject.ui.form.ClientForm;
 
-@Route("client")
 public class ClientLayout extends VerticalLayout {
 
     private ClientForm clientForm;
     private Grid<Client> clientGrid = new Grid<>(Client.class);
     private TextField filterText = new TextField();
     private Label label;
-    private final String bankName;
-    private final Long currentBankId = 1L;
+    private final String currentBankName;
+    private Long currentBankId;
 
     private final ClientService clientService;
+    private final BankService bankService;
 
 
-    public ClientLayout(ClientService clientService, String bankName) {
+    public ClientLayout(ClientService clientService, BankService bankService, String bankName) {
         this.clientService = clientService;
-        this.bankName = bankName;
+        this.bankService = bankService;
+        this.currentBankName = bankName;
 
         addClassName("client-view");
         setWidthFull();
@@ -95,8 +97,11 @@ public class ClientLayout extends VerticalLayout {
 
     private void addClient() {
         clientGrid.asSingleSelect().clear();
+
         Client newClient = new Client();
-        newClient.setId(currentBankId);
+        Bank currentBank = bankService.findByBankName(currentBankName);
+        newClient.setBank(currentBank);
+
         editClient(newClient);
     }
 
@@ -118,7 +123,7 @@ public class ClientLayout extends VerticalLayout {
     }
 
     private void updateList() {
-        clientGrid.setItems(clientService.findAll(filterText.getValue(), bankName));
+        clientGrid.setItems(clientService.findAll(filterText.getValue(), currentBankName));
     }
 
 }

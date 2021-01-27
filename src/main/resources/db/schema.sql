@@ -29,18 +29,19 @@ CREATE TABLE credit
 
 create table credit_offer
 (
-    id         bigint identity primary key,
-    credit_sum double,
-    fk_credit bigint foreign key  references credit (id),
-    fk_client  bigint foreign key references client (id)
+    id            bigint identity primary key,
+    credit_sum    bigint,
+    credit_period bigint,
+    fk_credit     bigint foreign key references credit (id),
+    fk_client     bigint foreign key references client (id)
 );
 
 create table payment
 (
-    id bigint identity primary key,
-    payment_amount double,
-    payment_date date,
-    payment_body double,
+    id                 bigint identity primary key,
+    payment_amount     double,
+    payment_date       date,
+    payment_body       double,
     interest_repayment double,
-    fk_credit_offer bigint foreign key references credit_offer (id)
+    fk_credit_offer    bigint foreign key references credit_offer (id)
 );

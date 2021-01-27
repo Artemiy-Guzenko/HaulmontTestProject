@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Setter
@@ -13,7 +14,7 @@ import java.time.LocalDate;
 public class Payment extends AbstractEntity {
 
     @Column(name = "payment_date")
-    private LocalDate paymentDate;
+    private Date paymentDate;
 
     @Column(name = "payment_amount")
     private Double paymentAmount;
@@ -27,4 +28,12 @@ public class Payment extends AbstractEntity {
     @ManyToOne
     @JoinColumn(name = "fk_credit_offer")
     private CreditOffer offer;
+
+    public Payment(Date paymentDate, Double paymentAmount, Double paymentBody, Double interestRepayment, CreditOffer offer) {
+        this.paymentDate = paymentDate;
+        this.paymentAmount = paymentAmount;
+        this.paymentBody = paymentBody;
+        this.interestRepayment = interestRepayment;
+        this.offer = offer;
+    }
 }
