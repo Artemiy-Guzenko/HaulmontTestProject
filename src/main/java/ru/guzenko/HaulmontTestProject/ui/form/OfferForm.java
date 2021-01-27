@@ -12,18 +12,15 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.binder.ValidationException;
-import com.vaadin.flow.data.converter.StringToDoubleConverter;
 import com.vaadin.flow.data.converter.StringToLongConverter;
 import com.vaadin.flow.shared.Registration;
 import ru.guzenko.HaulmontTestProject.backend.entity.Client;
 import ru.guzenko.HaulmontTestProject.backend.entity.Credit;
 import ru.guzenko.HaulmontTestProject.backend.entity.CreditOffer;
-import ru.guzenko.HaulmontTestProject.backend.entity.Payment;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class CreditOfferForm extends FormLayout {
+public class OfferForm extends FormLayout {
 
     ComboBox<Client> client = new ComboBox<>("Client");
     ComboBox<Credit> credit = new ComboBox<>("Credit");
@@ -37,10 +34,7 @@ public class CreditOfferForm extends FormLayout {
     Binder<CreditOffer> binder = new Binder<>(CreditOffer.class);
     private CreditOffer creditOffer;
 
-    public CreditOfferForm(List<Client> clients, List<Credit> credits) {
-        addClassName("credit-form");
-
-
+    public OfferForm(List<Client> clients, List<Credit> credits) {
 
         binder.forField(creditSum)
                 .withNullRepresentation("")
@@ -53,6 +47,7 @@ public class CreditOfferForm extends FormLayout {
                 .bind(CreditOffer::getCreditPeriod, CreditOffer::setCreditPeriod);
 
         binder.bindInstanceFields(this);
+
         client.setItems(clients);
         client.setItemLabelGenerator(Client::toString);
         credit.setItems(credits);
@@ -63,11 +58,11 @@ public class CreditOfferForm extends FormLayout {
                 credit,
                 creditSum,
                 creditPeriod,
-                createButtonsLayout());
+                createButtonsLayout()
+        );
     }
 
-
-    public void setCreditOffer(CreditOffer creditOffer) {
+    public void setOffer(CreditOffer creditOffer) {
         this.creditOffer = creditOffer;
         binder.readBean(creditOffer);
     }
@@ -98,35 +93,34 @@ public class CreditOfferForm extends FormLayout {
         }
     }
 
-    // Events
-    public static abstract class CreditOfferFormEvent extends ComponentEvent<CreditOfferForm> {
-        private CreditOffer creditOffer;
+    //Events
+    public static abstract class OfferFormEvent extends ComponentEvent<OfferForm> {
+        private CreditOffer offer;
 
-        protected CreditOfferFormEvent(CreditOfferForm source, CreditOffer creditOffer) {
+        protected OfferFormEvent(OfferForm source, CreditOffer offer) {
             super(source, false);
-            this.creditOffer = creditOffer;
+            this.offer = offer;
         }
 
-        public CreditOffer getCreditOffer() {
-            return creditOffer;
-        }
-    }
-
-    public static class SaveEvent extends CreditOfferFormEvent {
-        SaveEvent(CreditOfferForm source, CreditOffer creditOffer) {
-            super(source, creditOffer);
+        public CreditOffer getOffer() {
+            return offer;
         }
     }
 
-    public static class DeleteEvent extends CreditOfferFormEvent {
-        DeleteEvent(CreditOfferForm source, CreditOffer creditOffer) {
-            super(source, creditOffer);
+    public static class SaveEvent extends OfferFormEvent {
+        SaveEvent(OfferForm source, CreditOffer offer) {
+            super(source, offer);
         }
-
     }
 
-    public static class CloseEvent extends CreditOfferFormEvent {
-        CloseEvent(CreditOfferForm source) {
+    public static class DeleteEvent extends OfferFormEvent {
+        DeleteEvent(OfferForm source, CreditOffer offer) {
+            super(source, offer);
+        }
+    }
+
+    public static class CloseEvent extends OfferFormEvent {
+        CloseEvent(OfferForm source) {
             super(source, null);
         }
     }

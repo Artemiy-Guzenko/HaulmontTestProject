@@ -2626,3 +2626,2226 @@ INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
 COMMIT
 INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
 COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C2*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(1,1431234,2,1,2)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+DELETE FROM PAYMENT WHERE ID=0
+DELETE FROM PAYMENT WHERE ID=1
+DELETE FROM PAYMENT WHERE ID=2
+DELETE FROM PAYMENT WHERE ID=3
+DELETE FROM PAYMENT WHERE ID=4
+DELETE FROM PAYMENT WHERE ID=5
+DELETE FROM PAYMENT WHERE ID=6
+DELETE FROM CREDIT_OFFER WHERE ID=0
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(7,60002.16E0,'2021-01-27',50001.8E0,10000.36E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(8,59502.15E0,'2021-02-27',50001.8E0,9500.35E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(9,59006.3E0,'2021-03-27',50001.8E0,9004.5E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(10,58514.58E0,'2021-04-27',50001.8E0,8512.78E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(11,58026.97E0,'2021-05-27',50001.8E0,8025.16E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(12,57543.4E0,'2021-06-27',50001.8E0,7541.6E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(13,57063.87E0,'2021-07-27',50001.8E0,7062.07E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(14,56588.34E0,'2021-08-27',50001.8E0,6586.54E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(15,56116.77E0,'2021-09-27',50001.8E0,6114.97E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(16,55649.13E0,'2021-10-27',50001.8E0,5647.33E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(17,55185.38E0,'2021-11-27',50001.8E0,5183.58E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(18,54725.51E0,'2021-12-27',50001.8E0,4723.71E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(19,54269.47E0,'2022-01-27',50001.8E0,4267.66E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(20,53817.22E0,'2022-02-27',50001.8E0,3815.41E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(21,53368.75E0,'2022-03-27',50001.8E0,3366.94E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(22,52924.0E0,'2022-04-27',50001.8E0,2922.2E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(23,52482.97E0,'2022-05-27',50001.8E0,2481.17E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(24,52045.61E0,'2022-06-27',50001.8E0,2043.81E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(25,51611.89E0,'2022-07-27',50001.8E0,1610.09E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(26,51181.79E0,'2022-08-27',50001.8E0,1179.99E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(27,50755.29E0,'2022-09-27',50001.8E0,753.48E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(28,50332.32E0,'2022-10-27',50001.8E0,330.52E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(29,49912.88E0,'2022-11-27',50001.8E0,0.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(30,49496.94E0,'2022-12-27',50001.8E0,0.0E0,0)
+COMMIT
+DELETE FROM CREDIT_OFFER WHERE ID=0
+INSERT INTO CREDIT_OFFER VALUES(0,1500054,2,2,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(1,3125232,2,2,2)
+COMMIT
+INSERT INTO PAYMENT VALUES(7,125009.28E0,'2021-01-27',104174.4E0,20834.88E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(8,123967.54E0,'2021-02-27',104174.4E0,19793.14E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(9,122934.48E0,'2021-03-27',104174.4E0,18760.08E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(10,121910.02E0,'2021-04-27',104174.4E0,17735.62E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(11,120894.11E0,'2021-05-27',104174.4E0,16719.71E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(12,119886.66E0,'2021-06-27',104174.4E0,15712.26E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(13,118887.6E0,'2021-07-27',104174.4E0,14713.2E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(14,117896.87E0,'2021-08-27',104174.4E0,13722.47E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(15,116914.4E0,'2021-09-27',104174.4E0,12740.0E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(16,115940.11E0,'2021-10-27',104174.4E0,11765.71E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(17,114973.94E0,'2021-11-27',104174.4E0,10799.54E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(18,114015.83E0,'2021-12-27',104174.4E0,9841.43E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(19,113065.69E0,'2022-01-27',104174.4E0,8891.29E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(20,112123.48E0,'2022-02-27',104174.4E0,7949.08E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(21,111189.12E0,'2022-03-27',104174.4E0,7014.72E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(22,110262.54E0,'2022-04-27',104174.4E0,6088.14E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(23,109343.69E0,'2022-05-27',104174.4E0,5169.29E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(24,108432.49E0,'2022-06-27',104174.4E0,4258.09E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(25,107528.89E0,'2022-07-27',104174.4E0,3354.49E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(26,106632.81E0,'2022-08-27',104174.4E0,2458.41E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(27,105744.21E0,'2022-09-27',104174.4E0,1569.81E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(28,104863.0E0,'2022-10-27',104174.4E0,688.6E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(29,103989.15E0,'2022-11-27',104174.4E0,0.0E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(30,103122.57E0,'2022-12-27',104174.4E0,0.0E0,1)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(1,1234321,2,7,7)
+COMMIT
+INSERT INTO PAYMENT VALUES(7,44435.57E0,'2021-01-27',41144.04E0,3291.53E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(8,44287.45E0,'2021-02-27',41144.04E0,3143.41E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(9,44139.82E0,'2021-03-27',41144.04E0,2995.78E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(10,43992.69E0,'2021-04-27',41144.04E0,2848.65E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(11,43846.05E0,'2021-05-27',41144.04E0,2702.01E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(12,43699.9E0,'2021-06-27',41144.04E0,2555.86E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(13,43554.23E0,'2021-07-27',41144.04E0,2410.19E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(14,43409.05E0,'2021-08-27',41144.04E0,2265.01E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(15,43264.35E0,'2021-09-27',41144.04E0,2120.31E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(16,43120.14E0,'2021-10-27',41144.04E0,1976.1E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(17,42976.4E0,'2021-11-27',41144.04E0,1832.36E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(18,42833.15E0,'2021-12-27',41144.04E0,1689.11E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(19,42690.37E0,'2022-01-27',41144.04E0,1546.33E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(20,42548.07E0,'2022-02-27',41144.04E0,1404.03E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(21,42406.24E0,'2022-03-27',41144.04E0,1262.2E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(22,42264.89E0,'2022-04-27',41144.04E0,1120.85E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(23,42124.01E0,'2022-05-27',41144.04E0,979.97E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(24,41983.59E0,'2022-06-27',41144.04E0,839.55E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(25,41843.65E0,'2022-07-27',41144.04E0,699.61E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(26,41704.17E0,'2022-08-27',41144.04E0,560.13E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(27,41565.17E0,'2022-09-27',41144.04E0,421.12E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(28,41426.6E0,'2022-10-27',41144.04E0,282.56E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(29,41288.53E0,'2022-11-27',41144.04E0,144.48E0,1)
+COMMIT
+INSERT INTO PAYMENT VALUES(30,41150.89E0,'2022-12-27',41144.04E0,6.85E0,1)
+COMMIT
+/*C67*/SET SCHEMA PUBLIC
+DROP SCHEMA PUBLIC CASCADE
+create table bank ( id bigint identity primary key, bank_name varchar(25) not null )
+CREATE TABLE client ( id bigint identity primary key, last_name VARCHAR(25) NOT NULL, first_name VARCHAR(25) NOT NULL, middle_name VARCHAR(25), phone_number VARCHAR(11) unique, email VARCHAR(50), passport VARCHAR(10) unique, fk_client_bank bigint foreign key references bank (id) )
+CREATE TABLE credit ( id bigint identity primary key, credit_limit DOUBLE, interest_rate int, fk_credit_bank bigint foreign key references bank (id) )
+create table credit_offer ( id bigint identity primary key, credit_sum bigint, credit_period bigint, fk_credit bigint foreign key references credit (id), fk_client bigint foreign key references client (id) )
+create table payment ( id bigint identity primary key, payment_amount double, payment_date date, payment_body double, interest_repayment double, fk_credit_offer bigint foreign key references credit_offer (id) )
+INSERT INTO BANK VALUES(0,'Sber')
+COMMIT
+INSERT INTO BANK VALUES(1,'Otkritie')
+COMMIT
+INSERT INTO BANK VALUES(2,'Alfa')
+COMMIT
+INSERT INTO CLIENT VALUES(0,'Ivanov','Ivan','Ivanovich','89171231212','ivanich@gmail.com','1234123456',0)
+COMMIT
+INSERT INTO CLIENT VALUES(1,'Ivanov','Ivan','Stepanich','89171232121','stepatich@gmail.com','1234126246',0)
+COMMIT
+INSERT INTO CLIENT VALUES(2,'Tolkien','Kolan','Vasilich','89171253121','truetolkien@mail.ru','1234127264',0)
+COMMIT
+INSERT INTO CLIENT VALUES(3,'Goncharov','Victor','Arturovih','89425671536','gonchar@yandex.ru','3687123543',0)
+COMMIT
+INSERT INTO CLIENT VALUES(4,'Smith','Adam','Tod','89425836536','smithat@gmail.com','3287126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(5,'Smith','Tom','Grand','89425936536','smithtg@gmail.com','4187126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(6,'Tolstoy','Lev','Nicolaevich','89425838765','realtolstoy@mail.ru','3193126743',1)
+COMMIT
+INSERT INTO CLIENT VALUES(7,'Guzenko','Artemiy','Andreevich','89175461679','guzenko@mail.ru','3236786743',2)
+COMMIT
+INSERT INTO CREDIT VALUES(0,100000.0E0,30,0)
+COMMIT
+INSERT INTO CREDIT VALUES(1,500000.0E0,25,0)
+COMMIT
+INSERT INTO CREDIT VALUES(2,1000000.0E0,20,0)
+COMMIT
+INSERT INTO CREDIT VALUES(3,2500000.0E0,5,1)
+COMMIT
+INSERT INTO CREDIT VALUES(4,1500000.0E0,10,1)
+COMMIT
+INSERT INTO CREDIT VALUES(5,500000.0E0,12,1)
+COMMIT
+INSERT INTO CREDIT VALUES(6,100000.0E0,15,1)
+COMMIT
+INSERT INTO CREDIT VALUES(7,1250000.0E0,8,2)
+COMMIT
+INSERT INTO CREDIT_OFFER VALUES(0,1500000,2,2,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(0,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(1,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(2,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(3,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(4,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(5,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(6,1000000.0E0,'2021-01-27',5000.0E0,5000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(7,60000.0E0,'2021-01-27',50000.0E0,10000.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(8,59500.0E0,'2021-02-27',50000.0E0,9500.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(9,59004.17E0,'2021-03-27',50000.0E0,9004.17E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(10,58512.47E0,'2021-04-27',50000.0E0,8512.47E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(11,58024.87E0,'2021-05-27',50000.0E0,8024.87E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(12,57541.33E0,'2021-06-27',50000.0E0,7541.33E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(13,57061.81E0,'2021-07-27',50000.0E0,7061.81E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(14,56586.3E0,'2021-08-27',50000.0E0,6586.3E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(15,56114.75E0,'2021-09-27',50000.0E0,6114.75E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(16,55647.12E0,'2021-10-27',50000.0E0,5647.12E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(17,55183.4E0,'2021-11-27',50000.0E0,5183.4E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(18,54723.54E0,'2021-12-27',50000.0E0,4723.54E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(19,54267.51E0,'2022-01-27',50000.0E0,4267.51E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(20,53815.28E0,'2022-02-27',50000.0E0,3815.28E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(21,53366.82E0,'2022-03-27',50000.0E0,3366.82E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(22,52922.09E0,'2022-04-27',50000.0E0,2922.09E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(23,52481.08E0,'2022-05-27',50000.0E0,2481.08E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(24,52043.73E0,'2022-06-27',50000.0E0,2043.73E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(25,51610.04E0,'2022-07-27',50000.0E0,1610.04E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(26,51179.95E0,'2022-08-27',50000.0E0,1179.95E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(27,50753.45E0,'2022-09-27',50000.0E0,753.45E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(28,50330.51E0,'2022-10-27',50000.0E0,330.51E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(29,49911.09E0,'2022-11-27',50000.0E0,0.0E0,0)
+COMMIT
+INSERT INTO PAYMENT VALUES(30,49495.16E0,'2022-12-27',50000.0E0,0.0E0,0)
+COMMIT

@@ -27,6 +27,6 @@ public class Credit extends AbstractEntity {
 
     @Override
     public String toString() {
-        return this.creditLimit + " $, " + this.interestRate + " %";
+        return "up to " + this.creditLimit + " $, " + this.interestRate + " %";
     }
 }

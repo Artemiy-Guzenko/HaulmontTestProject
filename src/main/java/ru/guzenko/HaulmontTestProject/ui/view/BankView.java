@@ -62,7 +62,7 @@ public class BankView extends Div implements HasUrlParameter<String> {
         returnButton.addClickListener(click -> returnButton.getUI().ifPresent(ui -> ui.navigate(MainView.class)));
 
         Button goToOfferButton = new Button("Go to credit offers ->");
-        goToOfferButton.addClickListener(click -> goToOfferButton.getUI().ifPresent(ui -> ui.navigate(CreditOfferView.class, currentBankName)));
+        goToOfferButton.addClickListener(click -> goToOfferButton.getUI().ifPresent(ui -> ui.navigate(OfferView.class, currentBankName)));
 
         VerticalLayout leftPanel = new VerticalLayout();
         VerticalLayout rightPanel = new VerticalLayout();
